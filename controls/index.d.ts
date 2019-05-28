@@ -106,6 +106,7 @@ interface ControlApi<T extends object> extends ControlParameters<T> {
   xml: XMLDocument;
   attachments: Attachment[];
   files: FileEntries;
+  stagingId: string;
   userId: string;
   editXml: (edit: (doc: XMLDocument) => XMLDocument) => void;
   edits: (edits: ItemCommand[]) => Promise<ItemCommandResponse[]>;
@@ -125,3 +126,5 @@ interface CloudControlRegister {
     unmount: (removed: Element) => void
   ) => void;
 }
+
+declare const CloudControl: CloudControlRegister;
