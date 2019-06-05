@@ -1,4 +1,4 @@
-export interface BaseAttachment {
+interface BaseAttachment {
   uuid?: string;
   description: string;
   viewer?: string;
@@ -62,6 +62,7 @@ interface ControlParameters<T extends object> {
   controlType: string;
   providerId: string;
   title: string;
+  ctrlId: string;
   element: HTMLElement;
   reload: () => void;
   config: T;
@@ -97,10 +98,17 @@ interface FileEntry {
   files?: FileEntries;
 }
 
+type EditXML = (edit: (doc: XMLDocument) => XMLDocument) => void;
+
 type ItemCommandResponse =
   | AddAttachmentResponse
   | EditAttachmentResponse
   | DeleteAttachmentResponse;
+
+type ControlValidator = (
+  editXml: EditXML,
+  setRequired: (required: boolean) => void
+) => boolean;
 
 interface ControlApi<T extends object> extends ControlParameters<T> {
   xml: XMLDocument;
@@ -108,17 +116,20 @@ interface ControlApi<T extends object> extends ControlParameters<T> {
   files: FileEntries;
   stagingId: string;
   userId: string;
-  editXml: (edit: (doc: XMLDocument) => XMLDocument) => void;
-  edits: (edits: ItemCommand[]) => Promise<ItemCommandResponse[]>;
-  subscribeUpdates: (callback: (doc: ItemState) => void) => void;
-  unsubscribeUpdates: (callback: (doc: ItemState) => void) => void;
+  editXml: EditXML;
+  apiVersion: { major: number; minor: number; patch: number };
+  edits(edits: ItemCommand[]): Promise<ItemCommandResponse[]>;
+  subscribeUpdates(callback: (doc: ItemState) => void): void;
+  unsubscribeUpdates(callback: (doc: ItemState) => void): void;
   uploadFile(filepath: string, f: File): Promise<void>;
   deleteFile(filepath: string): Promise<void>;
-  registerNotification: () => void;
+  registerNotification(): void;
+  registerValidator(validator: ControlValidator): void;
+  deregisterValidator(validator: ControlValidator): void;
   providerUrl(serviceId: string): string;
 }
 
-interface CloudControlRegister {
+export interface CloudControlRegister {
   register: <T extends object = object>(
     vendorId: string,
     controlId: string,
@@ -127,4 +138,6 @@ interface CloudControlRegister {
   ) => void;
 }
 
-declare const CloudControl: CloudControlRegister;
+declare global {
+  const CloudControl: CloudControlRegister;
+}
