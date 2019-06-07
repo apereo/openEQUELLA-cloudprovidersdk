@@ -129,6 +129,36 @@ interface ControlApi<T extends object> extends ControlParameters<T> {
   providerUrl(serviceId: string): string;
 }
 
+type CloudConfigConfigType =
+  | "XPath"
+  | "Textfield"
+  | "Dropdown"
+  | "Check"
+  | "Radio";
+
+interface CloudControlConfig {
+  id: String;
+  name: string;
+  description?: string;
+  configType: CloudConfigConfigType;
+  options?: {
+    name: string;
+    value: string;
+  }[];
+  min: number;
+  max: number;
+}
+
+interface CloudControlDefinition {
+  name: string;
+  iconUrl?: string;
+  configuration: CloudControlConfig[];
+}
+
+export interface CloudControls {
+  [controlId: string]: CloudControlDefinition;
+}
+
 export interface CloudControlRegister {
   register: <T extends object = object>(
     vendorId: string,
