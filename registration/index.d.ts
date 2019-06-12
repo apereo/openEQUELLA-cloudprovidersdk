@@ -50,7 +50,7 @@ export interface ProviderRegistration {
    */
   serviceUris: { [serviceId: string]: ServiceUri };
   /**
-   * The viewer map.
+   * The attachment viewer map.
    * Cloud providers can extend openEQUELLA with their own
    * custom attachment type(s). In order to support viewing these attachments,
    * you must provide an entry in this map which lists at least a default viewer
@@ -67,4 +67,8 @@ interface ProviderRegistrationInstance extends ProviderRegistration {
 interface ProviderRegistrationResponse {
   instance: ProviderRegistrationInstance;
   forwardUrl: string;
+}
+
+interface ProviderRefreshRequest {
+  id: string;
 }

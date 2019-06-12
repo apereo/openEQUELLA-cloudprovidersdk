@@ -9,14 +9,14 @@ In order to complete the registration you should use the two parameters generate
 - `institution` - The institution URL requesting the registration.
 - `register` - An institution relative URI which you must POST a cloud provider JSON registration to. This URL can only be used once and will expire within an hour.
 
-If your registration is successful you will receive a registration response which contains:
+If your registration is successful you will receive a JSON registration response (`ProviderRegistrationResponse`) which contains:
 
 - The full cloud provider registration JSON, which will include the "provider id" and oauth credentials for authenticating into the openEQUELLA instance.
 - A forward URL to redirect the browser back into openEQUELLA.
 
 # Cloud Provider Registration data
 
-The format of the registration JSON is available in a typescript defintion file [here](../registration/index.d.ts).
+The format of the registration JSON is available in a typescript defintion file [here](../registration/index.d.ts) (`ProviderRegistration`).
 
 ```json
 {
@@ -34,9 +34,17 @@ The format of the registration JSON is available in a typescript defintion file 
       "uri": "${baseurl}oauthtoken",
       "authenticated": false
     },
+    "refresh": {
+      "uri": "${baseurl}refresh",
+      "authenticated": false
+    },
     "controls": {
       "uri": "${baseurl}controls",
-      "authenticated": true
+      "authenticated": false
+    },
+    "control_omdb": {
+      "uri": "${baseurl}omdb.js",
+      "authenticated": false
     }
   },
   "viewers": {

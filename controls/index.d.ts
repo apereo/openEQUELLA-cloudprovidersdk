@@ -110,7 +110,7 @@ type ControlValidator = (
   setRequired: (required: boolean) => void
 ) => boolean;
 
-interface ControlApi<T extends object> extends ControlParameters<T> {
+interface ControlApi<T extends object = object> extends ControlParameters<T> {
   xml: XMLDocument;
   attachments: Attachment[];
   files: FileEntries;
@@ -145,8 +145,8 @@ interface CloudControlConfig {
     name: string;
     value: string;
   }[];
-  min: number;
-  max: number;
+  min?: number;
+  max?: number;
 }
 
 interface CloudControlDefinition {

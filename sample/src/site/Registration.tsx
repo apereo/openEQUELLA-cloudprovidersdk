@@ -1,9 +1,7 @@
 import React from "react";
 import Axios from "axios";
-import {
-  ProviderRegistration,
-  ProviderRegistrationResponse
-} from "../../../registration";
+import { ProviderRegistrationResponse } from "oeq-cloudproviders/registration";
+import { providerRegistration } from "../shared/registration";
 
 export default () => {
   const params = new URLSearchParams(document.location.search);
@@ -18,49 +16,11 @@ export default () => {
     }
     return (
       <>
-        <div>Register {registration}</div>
-        <div>Institution {institution}</div>
-        <button onClick={registerProvider}>Register</button>
+        <div>Institution {institution} would like to register us.</div>
+        <button onClick={registerProvider}>Confirm</button>
       </>
     );
   } else {
     return <div />;
   }
 };
-
-function providerRegistration(): ProviderRegistration {
-  return {
-    name: "My Cloud Provider",
-    description: "My sample cloud provider, including wizard controls",
-    vendorId: "myvendor",
-    baseUrl: "http://localhost:5000/",
-    iconUrl:
-      "https://user-images.githubusercontent.com/4625498/55527161-8591ca80-56e3-11e9-8865-ca7c3bc5b7f2.gif",
-    providerAuth: {
-      clientId: "universityid",
-      clientSecret: "universitysecret"
-    },
-    serviceUris: {
-      oauth: {
-        uri: "${baseurl}oauthtoken",
-        authenticated: false
-      },
-      controls: {
-        uri: "${baseurl}controls",
-        authenticated: false
-      },
-      control_omdb: {
-        uri: "${baseurl}omdb.js",
-        authenticated: false
-      }
-    },
-    viewers: {
-      myattachment: {
-        "": {
-          name: "Default viewer",
-          serviceId: "viewattachment"
-        }
-      }
-    }
-  };
-}
