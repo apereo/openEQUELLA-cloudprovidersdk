@@ -1,7 +1,7 @@
 import express from "express";
+import { CloudControls } from "oeq-cloudproviders/controls";
 import Bundler from "parcel-bundler";
 import path from "path";
-import { CloudControls } from "../../controls";
 import { providerRegistration } from "./shared/registration";
 
 const app = express();

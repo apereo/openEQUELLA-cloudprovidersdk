@@ -1,5 +1,11 @@
 {
   "name": "oeq-cloudproviders",
   "version": "0.0.1",
-  "private": true
+  "private": true,
+  "scripts": {
+    "build": "tsc"
+  },
+  "devDependencies": {
+    "typescript": "^3.3.3333"
+  }
 }
