@@ -16,7 +16,7 @@ If your registration is successful you will receive a JSON registration response
 
 # Cloud Provider Registration data
 
-The format of the registration JSON is available in a typescript defintion file [here](../registration/index.d.ts) (`ProviderRegistration`).
+The format of the registration JSON is available in a typescript defintion file [here](../registration.d.ts) (`ProviderRegistration`).
 
 ```json
 {
