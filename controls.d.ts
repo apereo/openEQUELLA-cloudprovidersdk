@@ -98,7 +98,7 @@ interface FileEntry {
   files?: FileEntries;
 }
 
-type EditXML = (edit: (doc: XMLDocument) => XMLDocument) => void;
+type EditXMLFunc = (edit: (doc: XMLDocument) => XMLDocument) => void;
 
 type ItemCommandResponse =
   | AddAttachmentResponse
@@ -106,7 +106,7 @@ type ItemCommandResponse =
   | DeleteAttachmentResponse;
 
 type ControlValidator = (
-  editXml: EditXML,
+  editXml: EditXMLFunc,
   setRequired: (required: boolean) => void
 ) => boolean;
 
@@ -138,7 +138,7 @@ interface ControlApi<T extends object = object> extends ControlParameters<T> {
   /**
    * A function which takes a callback which edits XML metadata document.
    */
-  editXml: EditXML;
+  editXml: EditXMLFunc;
   /**
    * A function which can be used to make changes to the attachment list
    * and optionally associated metadata path.

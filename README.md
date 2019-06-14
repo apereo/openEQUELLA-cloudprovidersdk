@@ -9,7 +9,11 @@ Currently the ways in which Cloud Providers can extend openEQUELLA are in just a
 
 TODO explain needing a server
 
-In order to create a Cloud Provider which openEQUELLA users can register to use
+In order to create a Cloud Provider which openEQUELLA administrators can register, you will need to run a web server which is capable of responding to a few pre-defined requests.
+
+There is a sample implementation written in Typescript running on a NodeJS webserver located in the [sample](sample) subfolder.
+
+## Creating your own Cloud Provider
 
 1. [Registering a cloud provider](doc/registration.md)
 2. [Cloud provider services](doc/services.md)
