@@ -27,7 +27,8 @@ export interface ProviderRegistration {
   iconUrl?: string;
   /**
    * The vendor id should be a short string which is globally unique.
-   * For example it could be the name of your organization. It is used
+   * For example it could be the name of your organization. It is referenced
+   * in a few places, most notably as part of cloud wizard control registration.
    */
   vendorId: String;
   /**

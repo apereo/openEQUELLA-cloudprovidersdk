@@ -24,6 +24,8 @@ If your registration is successful you will receive a JSON registration response
 - The full cloud provider registration JSON, which will include the "provider id" and oauth credentials for authenticating into the openEQUELLA instance.
 - A forward URL to redirect the browser back into openEQUELLA.
 
+TODO: A diagram of the registration flow would be good.
+
 # Cloud Provider Registration data
 
 The format of the registration JSON is available in a typescript defintion file [here](../registration.d.ts) (`ProviderRegistration`).
@@ -68,5 +70,8 @@ The format of the registration JSON is available in a typescript defintion file 
 }
 ```
 
-TODO: Discuss baseurl
-TODO: Discuss what the serviceUris is about and point to the services page
+- `name`, `description`, and `iconUrl` are used for presentation inside openEQUELLA.
+- `providerAuth` provides openEQUELLA with credentials which are used to securely call services within your cloud provider.
+  It is up to the cloud provider to associate the credentials with an institution and can be used to determine what services the cloud provider supports within that institution. For example, the cloud provider might support multiple wizard controls but might only want to allow a subset of them depending on which institution is accessing them.
+- `serviceUris` - This is a map of `Service Id` to URL template. Some Service Ids have pre-defined meanings and expect request/responses in a certain format, they are documented in the [services](services.md) page.
+- `viewers` - This is a map of cloud provider attachment type to viewer definition. It is described on the [attachments](attachments.md) page.

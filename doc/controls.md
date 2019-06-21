@@ -161,7 +161,7 @@ type ControlValidator = (
 registerValidator(validator: ControlValidator): void;
 ```
 
-The `ControlValidator` is a function which takes two parameters and returns a boolean. The first parameter allows you to edit the XML prior to the page being submitted, the second is a callback which can be used to alert the user that the control isn't finished, either because it's invalid or it needs to be filled in. The required flag persist throughout the wizard, so even if you are on a different page and the user tries to save, they will be asked to return to the page with your invalid control unless they want to save as a draft.
+The `ControlValidator` is a function which takes two parameters and returns a boolean. The first parameter allows you to edit the XML prior to the page being submitted, the second is a callback which can be used to alert the user that the control isn't finished, either because it's invalid or it needs to be filled in. The required flag persist throughout the wizard, so even if you are on a different page and the user tries to save, they will be asked to return to the page with your invalid control unless they want to save as a draft. Please note that it is the responsibility of the control itself to render inline validation error messages.
 
 The boolean return value is whether or not the control is valid enough to allow the page submission to continue. You would only ever return `false` here if your control was in the middle of an action that needs to complete, for example uploading a file would be a good use case.
 
