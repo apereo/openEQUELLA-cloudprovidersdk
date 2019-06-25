@@ -9,7 +9,7 @@ Currently the ways in which Cloud Providers can extend openEQUELLA are in a few 
 
 In order to create a Cloud Provider which openEQUELLA administrators can register, you will need to run a web application which is capable of responding to a few pre-defined requests.
 
-There is a sample implementation written in Typescript running on a NodeJS webserver located in the [sample](sample) subfolder.
+There is a sample implementation of a cloud provider which provides you with a keyword search to the [OMDB API](http://www.omdbapi.com/) written in Typescript running on a NodeJS webserver located in the [sample](sample) subfolder.
 
 ## Creating your own Cloud Provider
 

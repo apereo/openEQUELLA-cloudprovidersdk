@@ -21,13 +21,13 @@ interface YoutubeAttachment extends BaseAttachment {
   uploadedDate: Date;
 }
 
-interface CloudAttachment extends BaseAttachment {
+interface CloudAttachment<Meta extends object = object> extends BaseAttachment {
   type: "cloud";
   providerId: string;
   vendorId: string;
   cloudType: string;
   display?: object;
-  meta?: object;
+  meta?: Meta;
   indexText?: string;
   indexFiles?: string[];
 }
@@ -72,6 +72,7 @@ interface ItemState {
   xml: XMLDocument;
   attachments: Attachment[];
   files: FileEntries;
+  stateVersion: number;
 }
 
 interface AddAttachmentResponse {

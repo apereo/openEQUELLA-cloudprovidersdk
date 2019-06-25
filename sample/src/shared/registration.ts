@@ -30,13 +30,17 @@ export function providerRegistration(): ProviderRegistration {
       control_omdb: {
         uri: "${baseurl}omdb.js",
         authenticated: false
+      },
+      imdbviewer: {
+        uri: "https://www.imdb.com/title/${imbdID}/",
+        authenticated: false
       }
     },
     viewers: {
-      myattachment: {
+      omdb: {
         "": {
           name: "Default viewer",
-          serviceId: "viewattachment"
+          serviceId: "imdbviewer"
         }
       }
     }
