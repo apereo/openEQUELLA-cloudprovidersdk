@@ -167,4 +167,34 @@ The boolean return value is whether or not the control is valid enough to allow 
 
 ## Talking to your own services
 
-TODO
+A common use case for a cloud wizard control would be to call off to your own hosted service in order to process data / content outside of the browser in a secure way.
+
+In order to facilitate this, the cloud control must call `providerUrl("<myserviceId>")` to get a base URL which can be used to GET or POST a request to. You can add your own query parameters to the URL you get back and these will be passed into the service URL template parameter map for the service ID you passed in.
+
+If the request needs authentication (`authentication` flag is true), openEQUELLA will attempt to use/retrieve an OAuth token and use with the request.
+
+Here is an example service which accepts the staging ID and a filename in order to do some processing, lets say scanning for viruses.
+
+```json
+{
+  "serviceUris": {
+    "scanService": {
+      "uri": "${baseurl}scan/${stagingid}/${filename}",
+      "authenticated": true
+    }
+  }
+}
+```
+
+Could be called in the wizard control in this manner:
+
+```typescript
+const serviceUrl =
+  api.providerUrl("scanService") +
+  "?stagingid=" +
+  encodeURIComponent(api.stagingId) +
+  "&filename=" +
+  encodeURIComponent(filename);
+
+axios.get(serviceUrl).then(/* process response */);
+```
