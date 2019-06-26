@@ -187,7 +187,7 @@ interface ControlApi<T extends object = object> extends ControlParameters<T> {
    * Get a URL which can be used to proxy requests from your control
    * back to your cloud provider service. The returned URL can have extra
    * parameters added to the end of it and they will be used as extra substitution
-   * variables by the service URI mapper.
+   * variables by the service URL mapper.
    * @param serviceId The cloud provider service you would like to call.
    * @returns A URL to either GET or POST to.
    */

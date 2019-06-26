@@ -3,8 +3,8 @@ interface OAuthCredentials {
   clientSecret: string;
 }
 
-interface ServiceUri {
-  uri: string;
+interface ServiceUrl {
+  url: string;
   authenticated: boolean;
 }
 
@@ -32,7 +32,7 @@ export interface ProviderRegistration {
    */
   vendorId: String;
   /**
-   * A base URL which can be referenced from your service URI map.
+   * A base URL which can be referenced from your service URL map.
    */
   baseUrl: string;
   /**
@@ -41,7 +41,7 @@ export interface ProviderRegistration {
    */
   providerAuth: OAuthCredentials;
   /**
-   * The service URI map.
+   * The service URL map.
    * This map contains template strings for generating URLs to
    * your cloud provider service, some of which are predefined
    * services which openEQUELLA will use to query for
@@ -49,7 +49,7 @@ export interface ProviderRegistration {
    * to authenticated private services which openEQUELLA can call in
    * a secure manner.
    */
-  serviceUris: { [serviceId: string]: ServiceUri };
+  serviceUrls: { [serviceId: string]: ServiceUrl };
   /**
    * The attachment viewer map.
    * Cloud providers can extend openEQUELLA with their own

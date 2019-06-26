@@ -57,9 +57,9 @@ For `Dropdown`, `Check` and `Radio` you must also supply a list of name/value op
 In order for you to implement your wizard control, your cloud provider must provide a service mapping to point to a javascript file which contains the implementation for the control. The id for the service is created by prepending `control_` to the control id. So for the `omdb` example above it would be `control_omdb`.
 
 ```json
- "serviceUris": {
+ "serviceUrls": {
     "control_omdb": {
-      "uri": "${baseurl}omdb.js",
+      "url": "${baseurl}omdb.js",
       "authenticated": false
     }
   }
@@ -177,9 +177,9 @@ Here is an example service which accepts the staging ID and a filename in order 
 
 ```json
 {
-  "serviceUris": {
+  "serviceUrls": {
     "scanService": {
-      "uri": "${baseurl}scan/${stagingid}/${filename}",
+      "url": "${baseurl}scan/${stagingid}/${filename}",
       "authenticated": true
     }
   }
