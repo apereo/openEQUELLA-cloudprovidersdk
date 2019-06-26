@@ -36,9 +36,9 @@ If your attachment is to support viewing (e.g. clicking on the attachment link a
 
 ```json
 {
-  "serviceUris": {
+  "serviceUrls": {
     "imdbviewer": {
-      "uri": "https://www.imdb.com/title/${imdbid}/",
+      "url": "https://www.imdb.com/title/${imdbid}/",
       "authenticated": false
     }
   },

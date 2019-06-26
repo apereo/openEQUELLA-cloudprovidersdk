@@ -14,25 +14,25 @@ export function providerRegistration(): ProviderRegistration {
       clientId: "universityid",
       clientSecret: "universitysecret"
     },
-    serviceUris: {
+    serviceUrls: {
       oauth: {
-        uri: "${baseurl}oauthtoken",
+        url: "${baseurl}oauthtoken",
         authenticated: false
       },
       refresh: {
-        uri: "${baseurl}refresh",
+        url: "${baseurl}refresh",
         authenticated: false
       },
       controls: {
-        uri: "${baseurl}controls",
+        url: "${baseurl}controls",
         authenticated: false
       },
       control_omdb: {
-        uri: "${baseurl}omdb.js",
+        url: "${baseurl}omdb.js",
         authenticated: false
       },
       imdbviewer: {
-        uri: "https://www.imdb.com/title/${imbdID}/",
+        url: "https://www.imdb.com/title/${imbdID}/",
         authenticated: false
       }
     },

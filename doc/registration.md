@@ -41,21 +41,21 @@ The format of the registration JSON is available in a typescript defintion file 
     "clientId": "universityid",
     "clientSecret": "universitysecret"
   },
-  "serviceUris": {
+  "serviceUrls": {
     "oauth": {
-      "uri": "${baseurl}oauthtoken",
+      "url": "${baseUrl}oauthtoken",
       "authenticated": false
     },
     "refresh": {
-      "uri": "${baseurl}refresh",
+      "url": "${baseUrl}refresh",
       "authenticated": false
     },
     "controls": {
-      "uri": "${baseurl}controls",
+      "url": "${baseUrl}controls",
       "authenticated": false
     },
     "control_omdb": {
-      "uri": "${baseurl}omdb.js",
+      "url": "${baseUrl}omdb.js",
       "authenticated": false
     }
   },
@@ -73,5 +73,5 @@ The format of the registration JSON is available in a typescript defintion file 
 - `name`, `description`, and `iconUrl` are used for presentation inside openEQUELLA.
 - `providerAuth` provides openEQUELLA with credentials which are used to securely call services within your cloud provider.
   It is up to the cloud provider to associate the credentials with an institution and can be used to determine what services the cloud provider supports within that institution. For example, the cloud provider might support multiple wizard controls but might only want to allow a subset of them depending on which institution is accessing them.
-- `serviceUris` - This is a map of `Service Id` to URL template. Some Service Ids have pre-defined meanings and expect request/responses in a certain format, they are documented in the [services](services.md) page.
+- `serviceUrls` - This is a map of `Service Id` to URL template. Some Service Ids have pre-defined meanings and expect request/responses in a certain format, they are documented in the [services](services.md) page.
 - `viewers` - This is a map of cloud provider attachment type to viewer definition. It is described on the [attachments](attachments.md) page.

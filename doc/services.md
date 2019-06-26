@@ -10,7 +10,7 @@ For example, if your cloud provider is responding to requests to view attachment
 | Parameter | Contents                                                 |
 | --------- | -------------------------------------------------------- |
 | `userid`  | The ID of the current openEQUELLA user                   |
-| `baseurl` | The base url supplied in the cloud provider registration |
+| `baseUrl` | The base url supplied in the cloud provider registration |
 
 ## oauth (POST)
 
