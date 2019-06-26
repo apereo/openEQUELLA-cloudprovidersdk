@@ -72,7 +72,6 @@ interface ItemState {
   xml: XMLDocument;
   attachments: Attachment[];
   files: FileEntries;
-  stateVersion: number;
 }
 
 interface AddAttachmentResponse {
