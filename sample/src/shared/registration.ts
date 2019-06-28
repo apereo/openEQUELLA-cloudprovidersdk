@@ -16,23 +16,23 @@ export function providerRegistration(): ProviderRegistration {
     },
     serviceUrls: {
       oauth: {
-        url: "${baseurl}oauthtoken",
+        url: "${baseUrl}oauthtoken",
         authenticated: false
       },
       refresh: {
-        url: "${baseurl}refresh",
+        url: "${baseUrl}refresh",
         authenticated: false
       },
       controls: {
-        url: "${baseurl}controls",
+        url: "${baseUrl}controls",
         authenticated: false
       },
       control_omdb: {
-        url: "${baseurl}omdb.js",
+        url: "${baseUrl}omdb.js",
         authenticated: false
       },
       imdbviewer: {
-        url: "https://www.imdb.com/title/${imbdID}/",
+        url: "https://www.imdb.com/title/${imdbID}/",
         authenticated: false
       }
     },

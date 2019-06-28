@@ -20,12 +20,25 @@ interface OMDBResult {
   Type: string;
   Poster: string;
 }
+
+type OMDBSearchResponse = OMDBResults | OMDBError;
 interface OMDBResults {
+  Response: "True";
   Search: OMDBResult[];
+  totalResults: string;
+}
+
+interface OMDBError {
+  Response: "False";
+  Error: string;
 }
 
 interface OMDBAttachmentMeta {
   imdbID: string;
+}
+
+function isOMDBResults(resp: OMDBSearchResponse): resp is OMDBResults {
+  return resp.Response === "True";
 }
 
 CloudControl.register<OMDBConfig>(
@@ -44,7 +57,7 @@ function isOMDBAttachment(
 function OMDBControl(props: ControlApi<OMDBConfig>) {
   const config = props.config;
 
-  function search(s: string): AxiosPromise<OMDBResults> {
+  function search(s: string): AxiosPromise<OMDBSearchResponse> {
     return axios.get(
       "http://www.omdbapi.com/?s=" +
         encodeURIComponent(s) +
@@ -55,6 +68,7 @@ function OMDBControl(props: ControlApi<OMDBConfig>) {
 
   const [searchText, setSearchText] = React.useState("");
   const [results, setResults] = React.useState<OMDBResults>();
+  const [error, setError] = React.useState<OMDBError>();
   const [omdbAttachments, setOmdbAttachments] = React.useState<
     CloudAttachment<OMDBAttachmentMeta>[]
   >(props.attachments.filter(isOMDBAttachment));
@@ -68,7 +82,18 @@ function OMDBControl(props: ControlApi<OMDBConfig>) {
   }, []);
   const doSearch = () => {
     if (searchText.length > 0) {
-      search(searchText).then(resp => setResults(resp.data));
+      search(searchText).then(resp => {
+        let error;
+        let results;
+        let data = resp.data;
+        if (isOMDBResults(data)) {
+          results = data;
+        } else {
+          error = data;
+        }
+        setResults(results);
+        setError(error);
+      });
     }
   };
   const attachmentMap = omdbAttachments.reduce((res, a) => {
@@ -159,6 +184,7 @@ function OMDBControl(props: ControlApi<OMDBConfig>) {
         onChange={e => setSearchText(e.target.value)}
       />
       <button onClick={doSearch}>Search</button>
+      {error && <h4>Failed to find any movies</h4>}
       {results && renderResults(results)}
     </div>
   );
