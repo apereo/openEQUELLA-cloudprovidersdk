@@ -12,37 +12,37 @@ export function providerRegistration(): ProviderRegistration {
       "https://user-images.githubusercontent.com/4625498/55527161-8591ca80-56e3-11e9-8865-ca7c3bc5b7f2.gif",
     providerAuth: {
       clientId: "universityid",
-      clientSecret: "universitysecret"
+      clientSecret: "universitysecret",
     },
     serviceUrls: {
       oauth: {
-        url: "${baseurl}oauthtoken",
-        authenticated: false
+        url: "${baseUrl}oauthtoken",
+        authenticated: false,
       },
       refresh: {
-        url: "${baseurl}refresh",
-        authenticated: false
+        url: "${baseUrl}refresh",
+        authenticated: false,
       },
       controls: {
-        url: "${baseurl}controls",
-        authenticated: false
+        url: "${baseUrl}controls",
+        authenticated: false,
       },
       control_omdb: {
-        url: "${baseurl}omdb.js",
-        authenticated: false
+        url: "${baseUrl}omdb.js",
+        authenticated: false,
       },
       imdbviewer: {
         url: "https://www.imdb.com/title/${imbdID}/",
-        authenticated: false
-      }
+        authenticated: false,
+      },
     },
     viewers: {
       omdb: {
         "": {
           name: "Default viewer",
-          serviceId: "imdbviewer"
-        }
-      }
-    }
+          serviceId: "imdbviewer",
+        },
+      },
+    },
   };
 }
